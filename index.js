@@ -18,7 +18,7 @@ function init() {
       },
       {
         type: 'input',
-        name: 'managerID',
+        name: 'managerId',
         message: "Enter the employeeID of the Team Manager",
       },
       {
