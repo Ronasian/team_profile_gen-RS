@@ -96,7 +96,8 @@ function init() {
   inquirer
   .prompt(managerPrompts)
   .then((data) => {
-    const manager = new Manager(data);
+    let manager = new Manager(data);
+    manager.role = manager.getRole();
     console.log(manager);
     team.push(manager);
   })
@@ -111,7 +112,8 @@ function openMenu() {
       inquirer
       .prompt(engineerPrompts)
       .then((data) => {
-        const engineer = new Engineer(data);
+        let engineer = new Engineer(data);
+        engineer.role = engineer.getRole();
         console.log(engineer);
         team.push(engineer);
       })
@@ -120,7 +122,8 @@ function openMenu() {
       inquirer
       .prompt(internPrompts)
       .then((data) => {
-        const intern = new Intern(data)
+        let intern = new Intern(data);
+        intern.role = intern.getRole();
         console.log(intern);
         team.push(intern);
       })

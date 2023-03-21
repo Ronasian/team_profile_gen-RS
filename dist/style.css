@@ -1,0 +1,54 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h1 {
+    padding: 30px;
+    text-align: center;
+    color: white;
+    background-color: rgb(68, 8, 68);
+}
+
+section {
+    margin-top: 100px;
+    margin-left: 400px;
+    margin-right: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    position: relative;
+    margin: 20px;
+    border: 2px solid black;
+    min-width: 250px;
+    max-width: 250px;
+}
+
+.employee {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    background-color: rgb(68, 8, 68);
+}
+
+.employee p {                        
+    padding: 5px;
+    color: white;
+    font-size: 25px;
+}
+
+.info {
+    background-color:rgb(226, 213, 226);
+    align-items: center;
+    padding: 25px;
+}
+
+.info p {
+    border: 1px solid black;
+    padding: 10px;
+    margin: 5px;
+}
