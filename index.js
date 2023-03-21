@@ -1,14 +1,19 @@
 const fs = require('fs');
+const Employee = require('./lib/employee')
+const Manager = require('./lib/manager');
+const Engineer = require('./lib/engineer');
+const Intern = require('./lib/intern');
 const inquirer = require('inquirer');
 const generateHTML = require('./utils/generateHTML.js');
 
 function writeToFile(fileName, data) {
     console.log(data);
-    fs.writeFile(fileName, generateHTML(data), (err) => err ? console.log(err) : console.log('README.md File Generated!')
-    );
+    fs.writeFile(fileName, generateHTML(data), (err) => err ? console.log(err) : console.log('index.html File Generated!'));
 }
 
-const employeePrompt = [
+var team = [];
+
+const employeePrompts = [
   {
     type: 'input',
     name: 'name',
@@ -17,36 +22,12 @@ const employeePrompt = [
   {
     type: 'input',
     name: 'id',
-    message: "Enter the employeeID of the employee",
+    message: "Enter the ID of the employee",
   },
   {
     type: 'input',
     name: 'email',
     message: "Enter the email address of the employee",
-  }
-]
-
-const managerPrompt = [
-  {
-    type: 'input',
-    name: 'officeNumber',
-    message: "Enter the manager's office number",
-  }
-]
-
-const engineerPrompt = [
-  {
-    type: 'input',
-    name: 'github',
-    message: "Enter the engineer's GitHub username"
-  }
-]
-
-const internPrompt = [
-  {
-    type: "input",
-    name: "school",
-    message: "Enter the intern's school"
   }
 ]
 
@@ -59,35 +40,73 @@ const menuPrompt = [
   }
 ]
 
-// function init() {
-//   inquirer
-//   .prompt([
-//     {
-//       type: 'input',
-//       name: 'managerName',
-//       message: "Enter the name of the Team Manager",
-//     },
-//     {
-//       type: 'input',
-//       name: 'managerId',
-//       message: "Enter the employeeID of the Team Manager",
-//     },
-//     {
-//       type: 'input',
-//       name: 'managerEmail',
-//       message: "Enter the email address of the Team Manager",
-//     },
-//     {
-//       type: 'input',
-//       name: 'officeNumber',
-//       message: "Enter the office number",
-//     },
-//   ])
-//     .then((data) => {
-//       // call to function that takes data and formats it for the markdown file named 'README'
-//       writeToFile('README.md', data);
-//     });
-//   }
-  
-//   // Function call to initialize app
-//   init();
+const officeNumPrompt = [
+  {
+    type: 'input',
+    name: 'officeNum',
+    message: "Enter the manager's office number",
+  }
+]
+
+const managerPrompts = employeePrompts.concat(officeNumPrompt);
+console.log(managerPrompts)
+const githubPrompt = [
+  {
+    type: 'input',
+    name: 'github',
+    message: "Enter the engineer's GitHub username"
+  }
+]
+
+const engineerPrompts = employeePrompts.concat(githubPrompt);
+
+const schoolPrompt = [
+  {
+    type: "input",
+    name: "school",
+    message: "Enter the intern's school"
+  }
+]
+
+const internPrompts = employeePrompts.concat(schoolPrompt);
+
+function init() {
+  inquirer
+  .prompt(managerPrompts)
+  .then((data) => {
+    console.log(data.name);
+    const manager = new Manager(data);
+  })
+  .then(openMenu)
+}
+
+function openMenu() {
+  inquirer
+  .prompt(menuPrompt)
+  .then((data) => {
+    console.log(data);
+    if (data.menu === 'Add an Engineer') {
+      console.log("engineer")
+      console.log(engineerPrompts);
+    
+      inquirer
+      .prompt(engineerPrompts)
+      .then((data) => {
+        let engineer = new Engineer(data)
+        console.log(data);
+      })
+      .then(openMenu)
+    } else if (data.menu === 'Add an Intern') {
+      inquirer
+      .prompt(internPrompts)
+      .then((data) => {
+        let intern = new Intern(data)
+      })
+      .then(openMenu)
+    } else {
+      writeToFile()
+    }
+  })
+}
+
+init();
