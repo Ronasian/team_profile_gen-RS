@@ -74,8 +74,8 @@ function init() {
   inquirer
   .prompt(managerPrompts)
   .then((data) => {
-    console.log(data.name);
     const manager = new Manager(data);
+    console.log(manager);
   })
   .then(openMenu)
 }
@@ -84,27 +84,24 @@ function openMenu() {
   inquirer
   .prompt(menuPrompt)
   .then((data) => {
-    console.log(data);
     if (data.menu === 'Add an Engineer') {
-      console.log("engineer")
-      console.log(engineerPrompts);
-    
       inquirer
       .prompt(engineerPrompts)
       .then((data) => {
-        let engineer = new Engineer(data)
-        console.log(data);
+        const engineer = new Engineer(data);
+        console.log(engineer);
       })
       .then(openMenu)
     } else if (data.menu === 'Add an Intern') {
       inquirer
       .prompt(internPrompts)
       .then((data) => {
-        let intern = new Intern(data)
+        const intern = new Intern(data)
       })
       .then(openMenu)
     } else {
-      writeToFile()
+      // writeToFile()
+      console.log('Program ended')
     }
   })
 }
