@@ -98,6 +98,7 @@ function init() {
   .then((data) => {
     const manager = new Manager(data);
     console.log(manager);
+    team.push(manager);
   })
   .then(openMenu)
 }
@@ -112,6 +113,7 @@ function openMenu() {
       .then((data) => {
         const engineer = new Engineer(data);
         console.log(engineer);
+        team.push(engineer);
       })
       .then(openMenu)
     } else if (data.menu === 'Add an Intern') {
@@ -120,11 +122,13 @@ function openMenu() {
       .then((data) => {
         const intern = new Intern(data)
         console.log(intern);
+        team.push(intern);
       })
       .then(openMenu)
     } else {
       // writeToFile()
-      console.log('Program ended')
+      console.log (`Team: ${JSON.stringify(team)}`);
+      console.log('Program ended');
     }
   })
 }
