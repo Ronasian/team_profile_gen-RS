@@ -13,23 +13,74 @@ function writeToFile(fileName, data) {
 
 var team = [];
 
-const employeePrompts = [
+const managerPrompts = [
   {
     type: 'input',
     name: 'name',
-    message: "Enter the name of the employee",
+    message: "Enter the manager's name"
   },
   {
     type: 'input',
     name: 'id',
-    message: "Enter the ID of the employee",
+    message: "Enter the manager's ID"
   },
   {
     type: 'input',
     name: 'email',
-    message: "Enter the email address of the employee",
+    message: "Enter the manager's email address"
+  },
+  {
+    type: 'input',
+    name: 'officeNum',
+    message: "Enter the manager's office number"
   }
-]
+];
+
+const engineerPrompts = [
+  {
+    type: 'input',
+    name: 'name',
+    message: "Enter the engineer's name"
+  },
+  {
+    type: 'input',
+    name: 'id',
+    message: "Enter the engineer's ID"
+  },
+  {
+    type: 'input',
+    name: 'email',
+    message: "Enter the engineer's email address"
+  },
+  {
+    type: 'input',
+    name: 'github',
+    message: "Enter the engineer's GitHub username"
+  }
+];
+
+const internPrompts = [
+  {
+    type: 'input',
+    name: 'name',
+    message: "Enter the intern's name",
+  },
+  {
+    type: 'input',
+    name: 'id',
+    message: "Enter the intern's ID",
+  },
+  {
+    type: 'input',
+    name: 'email',
+    message: "Enter the intern's email address",
+  },
+  {
+    type: "input",
+    name: "school",
+    message: "Enter the intern's school"
+  }
+];
 
 const menuPrompt = [
   {
@@ -40,37 +91,8 @@ const menuPrompt = [
   }
 ]
 
-const officeNumPrompt = [
-  {
-    type: 'input',
-    name: 'officeNum',
-    message: "Enter the manager's office number",
-  }
-]
-
-const managerPrompts = employeePrompts.concat(officeNumPrompt);
-console.log(managerPrompts)
-const githubPrompt = [
-  {
-    type: 'input',
-    name: 'github',
-    message: "Enter the engineer's GitHub username"
-  }
-]
-
-const engineerPrompts = employeePrompts.concat(githubPrompt);
-
-const schoolPrompt = [
-  {
-    type: "input",
-    name: "school",
-    message: "Enter the intern's school"
-  }
-]
-
-const internPrompts = employeePrompts.concat(schoolPrompt);
-
 function init() {
+  team = [];
   inquirer
   .prompt(managerPrompts)
   .then((data) => {
@@ -97,6 +119,7 @@ function openMenu() {
       .prompt(internPrompts)
       .then((data) => {
         const intern = new Intern(data)
+        console.log(intern);
       })
       .then(openMenu)
     } else {
