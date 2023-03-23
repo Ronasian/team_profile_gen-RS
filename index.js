@@ -4,14 +4,32 @@ const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
 const inquirer = require('inquirer');
-const generateHTML = require('./utils/generateHTML.js');
+const { renderManager, renderEngineer, renderIntern } = require('./utils/renderEmployees');
+
+let renderedHTML = '';
+
+let initHTML = `<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>My Team</title>
+      <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+      <h1>My Team</h1>
+      <section>`
+
+let finalHTML = `</section>
+  <script src="index.js"></script>
+  </body>
+</html>`
 
 function writeToFile(fileName, data) {
     console.log(data);
-    fs.writeFile(fileName, generateHTML(data), (err) => err ? console.log(err) : console.log('index.html File Generated!'));
+    fs.writeFile(fileName, data, (err) => err ? console.log(err) : console.log('index.html File Generated!'));
 }
-
-var team = [];
 
 const managerPrompts = [
   {
@@ -97,11 +115,9 @@ function init() {
   .prompt(managerPrompts)
   .then((data) => {
     let manager = new Manager(data);
-    let name = manager.getName();
-    let role = manager.getRole();
-    let id = manager.getId();
-    let email = manager.getEmail();
-    let officeNum = manager.officeNum;
+    renderedHTML += initHTML;
+    let managerHTML = renderManager(manager);
+    renderedHTML += managerHTML;
   })
   .then(openMenu)
 }
@@ -115,9 +131,8 @@ function openMenu() {
       .prompt(engineerPrompts)
       .then((data) => {
         let engineer = new Engineer(data);
-        engineer.role = engineer.getRole();
-        console.log(engineer);
-        team.push(engineer);
+        let engineerHTML = renderEngineer(engineer);
+        renderedHTML += engineerHTML;
       })
       .then(openMenu)
     } else if (data.menu === 'Add an Intern') {
@@ -125,14 +140,13 @@ function openMenu() {
       .prompt(internPrompts)
       .then((data) => {
         let intern = new Intern(data);
-        intern.role = intern.getRole();
-        console.log(intern);
-        team.push(intern);
+        let internHTML = renderIntern(intern);
+        renderedHTML += internHTML;
       })
       .then(openMenu)
     } else {
-      // writeToFile()
-      console.log (`Team: ${JSON.stringify(team)}`);
+      renderedHTML += finalHTML;
+      writeToFile('./dist/index.html', renderedHTML);
       console.log('Program ended');
     }
   })
