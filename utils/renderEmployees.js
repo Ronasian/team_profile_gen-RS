@@ -6,7 +6,7 @@ function renderManager(manager) {
     </div>
     <div class="info">
       <p>Id: ${manager.getId()}</p>
-      <p>Email: ${manager.getEmail()}</p>
+      <p>Email: <a href=mailto:${manager.getEmail()}>${manager.getEmail()}</a></p>
       <p>Office #: ${manager.officeNum}</p>
     </div>
   </div>`
@@ -20,7 +20,7 @@ function renderEngineer(engineer) {
     </div>
     <div class="info">
       <p>Id: ${engineer.getId()}</p>
-      <p>Email: ${engineer.getEmail()}</p>
+      <p>Email: <a href=mailto:${engineer.getEmail()}>${engineer.getEmail()}</a></p>
       <p>GitHub: ${engineer.getGithub()}</p>
     </div>
   </div>`
@@ -34,7 +34,7 @@ function renderIntern(intern) {
     </div>
     <div class="info">
       <p>Id: ${intern.getId()}</p>
-      <p>Email: ${intern.getEmail()}</p>
+      <p>Email: <a href=mailto:${intern.getEmail()}>${intern.getEmail()}</a></p>
       <p>School: ${intern.getSchool()}</p>
     </div>
   </div>`
