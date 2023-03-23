@@ -23,9 +23,8 @@ section {
 .card {
     position: relative;
     margin: 20px;
-    border: 2px solid black;
-    min-width: 250px;
-    max-width: 250px;
+    min-width: 300px;
+    max-width: 300px;
 }
 
 .employee {
@@ -48,7 +47,7 @@ section {
 }
 
 .info p {
-    border: 1px solid black;
+    border: 1px solid rgb(211, 178, 211);
     padding: 10px;
     margin: 5px;
 }

@@ -97,9 +97,11 @@ function init() {
   .prompt(managerPrompts)
   .then((data) => {
     let manager = new Manager(data);
-    manager.role = manager.getRole();
-    console.log(manager);
-    team.push(manager);
+    let name = manager.getName();
+    let role = manager.getRole();
+    let id = manager.getId();
+    let email = manager.getEmail();
+    let officeNum = manager.officeNum;
   })
   .then(openMenu)
 }
