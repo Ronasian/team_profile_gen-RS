@@ -21,7 +21,7 @@ function renderEngineer(engineer) {
     <div class="info">
       <p>Id: ${engineer.getId()}</p>
       <p>Email: <a href=mailto:${engineer.getEmail()}>${engineer.getEmail()}</a></p>
-      <p>GitHub: ${engineer.getGithub()}</p>
+      <p>GitHub: <a href=https://github.com/${engineer.getGithub()}>${engineer.getGithub()}</a></p>
     </div>
   </div>`
 };
