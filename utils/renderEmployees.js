@@ -1,3 +1,4 @@
+// renders html with manager values as text content
 function renderManager(manager) {
   return `<div class="card">
     <div class="employee">
@@ -11,7 +12,7 @@ function renderManager(manager) {
     </div>
   </div>`
 };
-
+// renders html with engineer values as text content
 function renderEngineer(engineer) {
     return `<div class="card">
     <div class="employee">
@@ -25,7 +26,7 @@ function renderEngineer(engineer) {
     </div>
   </div>`
 };
-
+// renders html with intern values as text content
 function renderIntern(intern) {
     return `<div class="card">
     <div class="employee">
