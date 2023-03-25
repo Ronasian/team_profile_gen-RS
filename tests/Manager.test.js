@@ -23,7 +23,7 @@ describe("Manager", () => {
       const cb = () => new Manager(data);
 
       // throws error if email is not a string
-      const err = new Error("Expected parameter 'email' to be a string");
+      const err = new Error("Expected parameter 'email' to be a non empty string");
 
       // must throw error
       expect(cb).toThrowError(err);
