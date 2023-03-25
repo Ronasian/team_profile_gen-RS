@@ -43,5 +43,16 @@ describe("Engineer", () => {
 
       expect(cb).toThrowError(err);
     });
+
+    it("should throw an error if 'github' input is not a string", () => {
+        const data = {name: "Robert", id: 3, email: "robert@gmail.com", github: 6};
+        const cb = () => new Engineer(data);
+    
+        // TODO: Add a comment describing the purpose of the following declaration
+        const err = new Error("Expected parameter 'github' to be a non empty string");
+  
+        // TODO: Add a comment describing the purpose of the following statement
+        expect(cb).toThrowError(err);
+      })
   });
 });
