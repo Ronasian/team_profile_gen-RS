@@ -32,7 +32,10 @@ THEN I exit the application, and the HTML is generated
 ```
 
 ## Usage
+Users must access the application file directory in the terminal and use 'node index.js' to initiate the program.
+Test suits can be ran using 'npm run test'.
 
+Link to video demo: https://drive.google.com/file/d/1mQA2V_4kamiF9ieblFlRQKy-wwhG0eEO/view
 
 ## License
 This project is licensed under The MIT License - see the LICENSE.md file for details
