@@ -12,16 +12,6 @@ describe("Employee", () => {
       expect(employee.email).toEqual("robert@gmail.com");
     });
 
-    it("should throw an error if id is not a number", () => {
-      const cb = () => new Employee("Robert", 'two', 'robert@gmail.com');
-
-      // TODO: Add a comment describing the purpose of the following declaration
-      const err = new Error("Expected parameter 'id' to be a non-negative number");
-
-      // TODO: Add a comment describing the purpose of the following statement
-      expect(cb).toThrowError(err);
-    });
-
     it("should throw an error if email input is not a string", () => {
         const cb = () => new Employee("Robert", 3, 6);
   

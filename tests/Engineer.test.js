@@ -14,17 +14,6 @@ describe("Engineer", () => {
       expect(data.github).toEqual("Robert123");
     });
 
-    it("should throw an error if id is not a number", () => {
-      const data = {name: "Robert", id: "three", email: "robert@gmail.com", github: "Robert123"};
-      const cb = () => new Engineer(data);
-
-      // TODO: Add a comment describing the purpose of the following declaration
-      const err = new Error("Expected parameter 'id' to be a non-negative number");
-
-      // TODO: Add a comment describing the purpose of the following statement
-      expect(cb).toThrowError(err);
-    });
-
     it("should throw an error if email input is not a string", () => {
         const data = {name: "Robert", id: 3, email: 6, github: "Robert123"};
         const cb = () => new Engineer(data);

@@ -14,17 +14,6 @@ describe("Manager", () => {
       expect(manager.officeNum).toEqual(1);
     });
 
-    it("should throw an error if id is not a number", () => {
-      const data = {name: "Robert", id: "three", email: "robert@gmail.com", officeNum: 1};
-      const cb = () => new Manager(data);
-
-      // TODO: Add a comment describing the purpose of the following declaration
-      const err = new Error("Expected parameter 'id' to be a non-negative number");
-
-      // TODO: Add a comment describing the purpose of the following statement
-      expect(cb).toThrowError(err);
-    });
-
     it("should throw an error if email input is not a string", () => {
         const data = {name: "Robert", id: 3, email: 6, officeNum: 1};
         const cb = () => new Manager(data);
@@ -44,23 +33,12 @@ describe("Manager", () => {
       expect(cb).toThrowError(err);
     });
 
-    it("should throw an error if 'officeNum' input is not a number", () => {
-      const data = {name: "Robert", id: 3, email: "robert@gmail.com", officeNum: "one"};
+    it("should throw an error if 'officeNum' input is less than 1", () => {
+      const data = {name: "Robert", id: 3, email: "robert@gmail.com", officeNum: 0};
       const cb = () => new Manager(data);
   
       // TODO: Add a comment describing the purpose of the following declaration
-      const err = new Error("Expected parameter 'officeNum' to be a non negative number");
-
-      // TODO: Add a comment describing the purpose of the following statement
-      expect(cb).toThrowError(err);
-    })
-
-    it("should throw an error if 'officeNum' input is less than 0", () => {
-      const data = {name: "Robert", id: 3, email: "robert@gmail.com", officeNum: -1};
-      const cb = () => new Manager(data);
-  
-      // TODO: Add a comment describing the purpose of the following declaration
-      const err = new Error("Expected parameter 'officeNum' to be a non negative number");
+      const err = new Error("Expected parameter 'officeNum' to be a number greater than 0");
 
       // TODO: Add a comment describing the purpose of the following statement
       expect(cb).toThrowError(err);

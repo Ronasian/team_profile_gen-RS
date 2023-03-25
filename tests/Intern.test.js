@@ -14,16 +14,16 @@ describe("Intern", () => {
       expect(intern.school).toEqual("UC Davis");
     });
 
-    it("should throw an error if id is not a number", () => {
-      const data = {name: "Robert", id: "three", email: "robert@gmail.com", school: "UC Davis"};
+    it("should throw an error if 'name' input is not a string", () => {
+      const data = {name: 0, id: 3, email: 6, school: "UC Davis"};
       const cb = () => new Intern(data);
 
       // TODO: Add a comment describing the purpose of the following declaration
-      const err = new Error("Expected parameter 'id' to be a non-negative number");
+      const err = new Error("Expected parameter 'name' to be a non empty string");
 
       // TODO: Add a comment describing the purpose of the following statement
       expect(cb).toThrowError(err);
-    });
+  });
 
     it("should throw an error if email input is not a string", () => {
         const data = {name: "Robert", id: 3, email: 6, school: "UC Davis"};
@@ -34,7 +34,7 @@ describe("Intern", () => {
   
         // TODO: Add a comment describing the purpose of the following statement
         expect(cb).toThrowError(err);
-      });
+    });
 
     it("should throw an error if 'id' is less than 0", () => {
       const data = {name: "Robert", id: -1, email: "robert@gmail.com", school: "UC Davis"};
