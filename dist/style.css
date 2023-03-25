@@ -3,14 +3,14 @@
     padding: 0px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
+/* Page Header */
 h1 {
     padding: 30px;
     text-align: center;
     color: white;
     background-color: rgb(68, 8, 68);
 }
-
+/* Generated Team Cards Section */
 section {
     margin-top: 100px;
     margin-left: 400px;
@@ -19,33 +19,33 @@ section {
     flex-wrap: wrap;
     justify-content: space-between;
 }
-
+/* Individual card styling */
 .card {
     position: relative;
     margin: 20px;
     min-width: 300px;
     max-width: 300px;
 }
-
+/* Top of card (name and role) */
 .employee {
     position: relative;
     width: 100%;
     text-align: center;
     background-color: rgb(68, 8, 68);
 }
-
+/* text styling for name and role */
 .employee p {                        
     padding: 5px;
     color: white;
     font-size: 25px;
 }
-
+/* Bottom half of card (id, email, and other) */
 .info {
     background-color:rgb(226, 213, 226);
     align-items: center;
     padding: 25px;
 }
-
+/* styling for id, email, and other */
 .info p {
     border: 1px solid rgb(211, 178, 211);
     padding: 10px;
